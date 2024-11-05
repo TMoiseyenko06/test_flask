@@ -27,4 +27,4 @@ def negative_sum(num_1,num_2):
             new_sum = Sum(num1=int(num_1),num2=int(num_2))
             session.add(new_sum)
             session.commit()
-    return jsonify({"sum":num_1+num_2}), 200
+    return jsonify({"sum":int(num_1)+int(num_2)}), 200
