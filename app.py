@@ -46,8 +46,11 @@ def negative_sum(num_1,num_2):
 
 @app.route('/filter-by-results/<string:result>',methods=['GET'])
 def filter_results(result):
-    result = int(result)
-    with Session(db.engine) as session:
-        with session.begin():
-            sums = session.query(Sum).all()
-            return sums_schema.jsonify(sums)
+    try:
+        result = int(result)
+        with Session(db.engine) as session:
+            with session.begin():
+                sums = session.query(Sum).all()
+                return sums_schema.jsonify(sums)
+    except:
+        return jsonify({"status":"BAD","message":"An error has occured"}), 400

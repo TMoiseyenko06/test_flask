@@ -1,6 +1,7 @@
 from app import negative_sum, app
 import unittest
 
+
 class TestNegativeSum(unittest.TestCase):
 
     def setUp(self):
@@ -13,8 +14,11 @@ class TestNegativeSum(unittest.TestCase):
 
     def test_negative_sum(self):
         result = self.app.post('/negative-sum/-1/-1')
-        print("result: ",result.get_json())
         self.assertEqual(result.get_json()['sum'], -2)
+
+    def test_negative_find(self):
+        result = self.app.get('/filter-by-results/aerger')
+        self.assertNotEqual(result.status_code,200)
 
 if __name__ == "__main__":
     unittest.main()
