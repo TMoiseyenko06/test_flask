@@ -6,6 +6,3 @@ app = Flask(__name__)
 def negative_sum(num_1,num_2):
     sum = int(num_1) + int(num_2)
     return jsonify({"sum":sum}), 200
-
-if __name__ == '__main__':
-    app.run(debug=True)
