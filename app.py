@@ -24,7 +24,7 @@ with app.app_context():
 def negative_sum(num_1,num_2):
     with Session(db.engine) as session:
         with session.begin():
-            new_sum = Sum(num1=num_1,num2=num_2)
+            new_sum = Sum(num1=int(num_1),num2=int(num_2))
             session.add(new_sum)
             session.commit()
     return jsonify({"sum":num_1+num_2}), 200
